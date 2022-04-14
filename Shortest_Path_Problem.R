@@ -41,6 +41,7 @@ nw.mst <- nw.mst + t(nw.mst)
 colnames(nw.mst) <- rownames(nw.mst) <- as.character(1:6)
 g <- graph.adjacency(nw.mst, mode="undirected", weighted=TRUE)
 plot(g, edge.label=E(g)$weight)
+# minimal spanning tree
 mst.g <- mst(g)
 plot(mst.g, edge.label=E(mst.g)$weight)
 sum(E(mst.g)$weight) # 길이
@@ -57,9 +58,11 @@ nw.tsp <- matrix(c(0,5,3,Inf,6,5,
                  byrow=T, ncol=6)
 nw.tsp <- nw.tsp + t(nw.tsp)
 colnames(nw.tsp) <- rownames(nw.tsp) <- as.character(1:6)
+View(nw.tsp)
 tsp <- TSP(nw.tsp) 
-n_of_cities(tsp) 
+n_of_cities(tsp)
 labels(tsp)
 tour <- solve_TSP(tsp) 
 names(tour)
 tour # 길이
+
