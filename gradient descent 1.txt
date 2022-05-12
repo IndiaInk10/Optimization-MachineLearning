@@ -1,0 +1,26 @@
+f <- function(x) x^4
+f.prime <- function(x) 4*x^3
+curve(f, -3, 3)
+x <- 2.9
+print(c(x,f(x)))
+alpha <- 0.05
+points(x,f(x),pch=16,col="red",cex=1.5)
+
+for(i in 1:200){
+  x <- x - alpha*f.prime(x)
+  print(c(x,f(x)))
+  points(x,f(x),pch=16,col="red",cex=1.5)
+}
+
+f <- function(x1, x2) x1^2+x2^2-2*x1+x1*x2+1
+f.prime.1 <- function(x1, x2) 2*x1+x2-2
+f.prime.2 <- function(x1, x2) x1+2*x2
+x <- as.matrix(c(5,5))
+f(x[1,1],x[2,1])
+alpha <- 0.1
+for(i in 1:200){
+  gradient <- c(f.prime.1(x[1,1],x[2,1]), f.prime.2(x[1,1],x[2,1]))
+  x <- x - alpha*as.matrix(gradient)
+  print(x)
+  print(f(x[1],x[2]))
+}
