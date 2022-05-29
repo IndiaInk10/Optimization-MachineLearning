@@ -5,6 +5,7 @@ X <- cbind(1,as.matrix(state[1:4]))
 X <- cbind(X, as.matrix(state[7]))
 y <- as.matrix(state["Murder"])
 
+X
 # 비용함수
 cost <- function(X, y, w) {
   sum( (X %*% w - y)^2 ) / (2*length(y))
