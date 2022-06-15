@@ -21,7 +21,6 @@ w_history <- list(num_iters)
 
 # 초기화
 w <- matrix(c(0,0), nrow=ncol(X))
-
 # gradient descent
 for (i in 1:num_iters) {
   error <- (X %*% w - y)
@@ -32,6 +31,7 @@ for (i in 1:num_iters) {
   if (i == num_iters) print(c(as.vector(w),cost(X, y, w)))
   # Sys.sleep(0.02)
 }
+
 # cost 변화
 plot(cost_history, type='l', col='blue', lwd=2, 
      ylab='C(w)', xlab='Iterations')
